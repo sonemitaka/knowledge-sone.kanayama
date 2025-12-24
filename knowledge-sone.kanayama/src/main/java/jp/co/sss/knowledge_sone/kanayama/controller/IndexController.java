@@ -1,34 +1,47 @@
 package jp.co.sss.knowledge_sone.kanayama.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
+import jp.co.sss.knowledge_sone.kanayama.been.LoginResultBean;
 import jp.co.sss.knowledge_sone.kanayama.form.LoginForm;
+import jp.co.sss.knowledge_sone.kanayama.service.LoginService;
 
 @Controller
 public class IndexController {
 
+	@Autowired
+	LoginService loginService;
+
 	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String index(LoginForm loginForm) {
-
-		System.out.println("index GET:" + loginForm);
-
+	public String index(@ModelAttribute LoginForm loginForm) {
 		return "index";
 	}
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String login(LoginForm loginForm) {
+	public String login(@ModelAttribute LoginForm loginForm, Model model, HttpSession sesson) {
 
-		System.out.println("index POST:" + loginForm);
+		LoginResultBean loginResultBean = loginService.execute(loginForm);
 
-		return "redirect:/list";
+		if (loginResultBean.isLogin()) {
+			sesson.setAttribute("loginUser", loginResultBean.getLoginUser());
+			return "redirect:/list";
+		} else {
+			model.addAttribute("errMessage", loginResultBean.getErrorMsg());
+			return "index";
+		}
 
 	}
 
 	@RequestMapping(path = "/logout", method = RequestMethod.GET)
-	public String logout() {
+	public String logout(HttpSession session) {
 
+		session.invalidate();
 		return "redirect:/";
 	}
 

@@ -1,13 +1,28 @@
 package jp.co.sss.knowledge_sone.kanayama.controller;
 
+import java.text.ParseException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.sss.knowledge_sone.kanayama.been.EmployeeBean;
 import jp.co.sss.knowledge_sone.kanayama.form.EmployeeForm;
+import jp.co.sss.knowledge_sone.kanayama.service.SearchForEmployeesByEmpIdService;
+import jp.co.sss.knowledge_sone.kanayama.service.UpdateEmployeeService;
+import jp.co.sss.knowledge_sone.kanayama.util.BeanManager;
 
 @Controller
 public class UpdateController {
+
+	@Autowired
+	SearchForEmployeesByEmpIdService searchForEmployeesByEmpIdService;
+
+	@Autowired
+	UpdateEmployeeService updateEmployeeService;
 
 	/**
 	 * 社員情報の変更内容入力画面を出力
@@ -17,12 +32,15 @@ public class UpdateController {
 	 * @param model
 	 *            モデル
 	 * @return 遷移先のビュー
+	 * @throws ParseException 
 	 */
 	@RequestMapping(path = "/update/input", method = RequestMethod.GET)
-	public String inputUpdate(String empId, EmployeeForm employeeForm) {
+	public String inputUpdate(Integer empId, @ModelAttribute EmployeeForm employeeForm, Model model) {
 
-		System.out.println("inputUpdate:" + empId);
-		System.out.println("inputUpdate:" + employeeForm);
+		EmployeeBean employee = searchForEmployeesByEmpIdService.execute(empId);
+
+		employeeForm = BeanManager.copyBeanToForm(employee);
+		model.addAttribute("employeeForm", employee);
 
 		return "update/update_input";
 	}
@@ -37,9 +55,7 @@ public class UpdateController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/update/check", method = RequestMethod.POST)
-	public String checkUpdate(EmployeeForm employeeForm) {
-
-		System.out.println("checkUpdate:" + employeeForm);
+	public String checkUpdate(@ModelAttribute EmployeeForm employeeForm) {
 
 		return "update/update_check";
 	}
@@ -51,10 +67,7 @@ public class UpdateController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/update/back", method = RequestMethod.POST)
-	public String backInputUpdate(EmployeeForm employeeForm) {
-
-		System.out.println("checkUpdate:" + employeeForm);
-
+	public String backInputUpdate(@ModelAttribute EmployeeForm employeeForm) {
 		return "update/update_input";
 	}
 
@@ -66,9 +79,9 @@ public class UpdateController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/update/complete", method = RequestMethod.POST)
-	public String exeUpdate(EmployeeForm employeeForm) {
+	public String completeUpdate(EmployeeForm employeeForm) {
 
-		System.out.println("exeUpdate:" + employeeForm);
+		updateEmployeeService.execute(employeeForm);
 
 		return "redirect:/update/complete";
 	}

@@ -1,13 +1,21 @@
 package jp.co.sss.knowledge_sone.kanayama.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.knowledge_sone.kanayama.form.EmployeeForm;
+import jp.co.sss.knowledge_sone.kanayama.service.RegisterEmployeeService;
+import jp.co.sss.knowledge_sone.kanayama.util.Constant;
 
 @Controller
 public class RegistrationController {
+
+	@Autowired
+	private RegisterEmployeeService service;
 
 	/**
 	 * 社員情報の登録内容入力画面を出力
@@ -15,9 +23,10 @@ public class RegistrationController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/regist/input", method = RequestMethod.GET)
-	public String inputRegist(EmployeeForm employeeForm) {
-
-		System.out.println("inputRegist:" + employeeForm);
+	public String inputRegist(@ModelAttribute EmployeeForm employeeForm) {
+		employeeForm.setGender(Constant.DEFAULT_GENDER);
+		employeeForm.setAuthority(Constant.DEFAULT_AUTHORITY);
+		employeeForm.setDeptId(Constant.DEFAULT_DEPT_ID);
 
 		return "regist/regist_input";
 	}
@@ -32,9 +41,7 @@ public class RegistrationController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/regist/check", method = RequestMethod.POST)
-	public String checkRegist(EmployeeForm employeeForm) {
-
-		System.out.println("checkRegist:" + employeeForm);
+	public String checkRegist(@ModelAttribute EmployeeForm employeeForm, Model model) {
 
 		return "regist/regist_check";
 	}
@@ -46,10 +53,7 @@ public class RegistrationController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/regist/back", method = RequestMethod.POST)
-	public String backInputRegist(EmployeeForm employeeForm) {
-
-		System.out.println("backInputRegist:" + employeeForm);
-
+	public String backInputRegist(@ModelAttribute EmployeeForm employeeForm) {
 		return "regist/regist_input";
 	}
 
@@ -61,9 +65,10 @@ public class RegistrationController {
 	 * @return リダイレクト：完了画面
 	 */
 	@RequestMapping(path = "/regist/complete", method = RequestMethod.POST)
-	public String exeRegist(EmployeeForm employeeForm) {
+	public String completeRegist(EmployeeForm employeeForm) {
 
-		System.out.println("exeRegist:" + employeeForm);
+		//登録実行
+		service.execute(employeeForm);
 
 		return "redirect:/regist/complete";
 	}

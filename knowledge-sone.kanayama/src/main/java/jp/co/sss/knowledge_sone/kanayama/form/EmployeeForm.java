@@ -2,6 +2,8 @@ package jp.co.sss.knowledge_sone.kanayama.form;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class EmployeeForm {
 	/** 社員ID */
 	private Integer empId;
@@ -19,6 +21,7 @@ public class EmployeeForm {
 	private String address;
 
 	/** 生年月日 */
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date birthday;
 
 	/** 権限 */
