@@ -23,47 +23,64 @@
 		</div>
 	</th:block>
 	<!--	該当社員がいる場合-->
-	<table class="list_table" th:if="!${#lists.isEmpty(employees)}">
-		<tr>
-			<th>社員ID</th>
-			<th>社員名</th>
-			<th class="gender">性別</th>
-			<th class="address">住所</th>
-			<th class="birthday">生年月日</th>
-			<th class="authority">権限</th>
-			<th class="deptName">部署名</th>
-			<th class="button">変更</th>
-			<th class="button">削除</th>
-		</tr>
-		<tr th:each="employee: ${employees}">
-			<td th:text="${employee.empId}"></td>
-			<td th:text="${employee.empName}"></td>
-			<!--
-				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる
-				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される
-			-->
-			<td th:switch="${employee.gender}">
-				<span th:case="1">男性</span> <span th:case="2">女性</span>
-			</td>
-			<td th:text="${employee.address}"></td>
-			<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
-			<td th:switch="${employee.authority}">
-				<span th:case="1">一般</span> <span th:case="2">管理者</span>
-			</td>
-			<td th:text="${employee.deptName}"></td>
-			<td>
-				<form method="get" th:action="@{/update/input}">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<input type="submit" value="変更" />
-				</form>
-			</td>
-			<td>
-				<form method="get" th:action="@{/delete/check}">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<input type="submit" value="削除" class="delete" />
-				</form>
-			</td>
-		</tr>
+	<table class="list_table">
+	    <thead>
+	        <tr>
+	            <th>社員番号</th>
+	            <th>名前</th>
+	            <th>入社日</th>
+	            <th>勤続年数</th>
+	            <th>性別</th>
+	            <th>メール</th>
+	            <th>誕生日</th>
+	            <th>出身地</th>
+	            <th>ニックネーム</th>
+	            <th>仕事経験</th>
+	            <th>仕事のはかどる時間</th>
+	            <th>好きな言葉</th>
+	            <th>尊敬する人</th>
+	            <th>趣味</th>
+	            <th>特技</th>
+	            <th>休日の過ごし方</th>
+	            <th>言われたらうれしいこと</th>
+	            <th>やられたらウレシイこと</th>
+	            <th>いわれたら悲しい言葉</th>
+	            <th>やられると悲しいこと</th>
+	            <th>将来の野望</th>
+	            <th colspan="2">操作</th>
+	        </tr>
+	    </thead>
+
+	    <tbody>
+	        <th:block th:if="!${#lists.isEmpty(employees)}">
+	            <tr th:each="employee: ${employees}">
+	                <td th:text="${employee.empId}"></td>
+	                <td th:text="${employee.empName}"></td>
+	                <td></td> <td></td> <td th:switch="${employee.gender}">
+	                    <span th:case="1">男性</span> <span th:case="2">女性</span>
+	                </td>
+	                <td></td> <td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
+	                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td>
+	                    <form method="get" th:action="@{/update/input}">
+	                        <input type="hidden" name="empId" th:value="${employee.empId}" />
+	                        <input type="submit" value="変更" />
+	                    </form>
+	                </td>
+	                <td>
+	                    <form method="get" th:action="@{/delete/check}">
+	                        <input type="hidden" name="empId" th:value="${employee.empId}" />
+	                        <input type="submit" value="削除" class="delete" />
+	                    </form>
+	                </td>
+	            </tr>
+	        </th:block>
+
+	        <tr th:if="${#lists.isEmpty(employees)}">
+	            <td colspan="23" style="text-align: center; padding: 20px;">
+	                該当する社員は存在しません。
+	            </td>
+	        </tr>
+	    </tbody>
 	</table>
 </body>
 
