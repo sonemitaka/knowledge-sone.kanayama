@@ -10,38 +10,108 @@
 	<h3>社員削除確認画面</h3>
 	<div class="update">
 		<div class="form">
+					<div class="label">社員番号：</div>
+					<div class="input" th:text="${employeeForm.empId}"></div>
+				</div>
+		<div class="form">
 			<div class="label">パスワード：</div>
 			<div class="input">※非表示</div>
 		</div>
 		<div class="form">
-			<div class="label">社員名：</div>
-			<div class="input" th:text="${employee.empName}"></div>
+			<div class="label">名前：</div>
+			<div class="input" th:text="${employeeForm.empName}"></div>
 		</div>
 		<div class="form">
+					<div class="label">フリガナ：</div>
+					<div class="input" th:text="${employeeForm.furigana}"></div>
+				</div>
+						</div>
+		<div class="form">
 			<div class="label">性別：</div>
-			<div class="input" th:switch="${employee.gender}">
-				<span th:case="1">男性</span> <span th:case="2">女性</span>
+			<div class="input" th:switch="${employeeForm.gender}">
+				<span th:case="1">男性</span>
+				<span th:case="2">女性</span>
 			</div>
 		</div>
 		<div class="form">
-			<div class="label">住所：</div>
-			<div class="input" th:text="${employee.address}"></div>
+			<div class="label">出身地：</div>
+			<div class="input" th:text="${employeeForm.hometown}"></div>
 		</div>
 		<div class="form">
-			<div class="label">生年月日：</div>
-			<!-- 日付出力フォーマットを設定 -->
-			<div class="input" th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></div>
+			<div class="label">入社日：</div>
+			<div class="input" th:text="${#dates.format(employeeForm.joiningDay, 'yyyy/MM/dd')}"></div>
+			<div class="form">
+								<div class="label">メール：</div>
+								<div class="input" th:text="${employeeForm.mailAddress}"></div>
+							</div>
+							<div class="form">
+												<div class="label">誕生日：</div>
+												<div class="input" th:text="${employeeForm.birthday}"></div>
+											</div>
 		</div>
+		<div class="form">
+							<div class="label">ニックネーム：</div>
+							<div class="input" th:text="${employeeForm.nickName}"></div>
+						</div>	
+						<div class="form">
+							<div class="label">仕事経験：</div>
+							<div class="input" th:text="${employeeForm.previousJob}"></div>
+						</div>	
+						<div class="form">
+							<div class="label">仕事の滞る時間：</div>
+							<div class="input" th:text="${employeeForm.focusTime}"></div>
+						</div>
+						<div class="form">
+							<div class="label">好きな言葉：</div>
+							<div class="input" th:text="${employeeForm.favoriteWords}"></div>
+						</div>
+						<div class="form">
+							<div class="label">尊敬する人：</div>
+							<div class="input" th:text="${employeeForm.respect}"></div>
+						</div>
+						<div class="form">
+							<div class="label">趣味：</div>
+							<div class="input" th:text="${employeeForm.hobby}"></div>
+						</div>
+						<div class="form">
+							<div class="label">特技：</div>
+							<div class="input" th:text="${employeeForm.speciality}"></div>
+						</div>
+						<div class="form">
+							<div class="label">休日の過ごし方：</div>
+							<div class="input" th:text="${employeeForm.spendHolidays}"></div>
+							<div class="form">
+								<div class="label">言われたらうれしい言葉：</div>
+								<div class="input" th:text="${employeeForm.happyWords}"></div>
+							</div>
+							<div class="form">
+								<div class="label">やられたらウレシイこと：</div>
+								<div class="input" th:text="${employeeForm.happyReceive}"></div>
+							</div>
+							<div class="form">
+								<div class="label">言われたら悲しい言葉：</div>
+								<div class="input" th:text="${employeeForm.sadWords}"></div>
+							</div>
+							<div class="form">
+								<div class="label">やられたらカナシイこと：</div>
+								<div class="input" th:text="${employeeForm.sadReceive}"></div>
+							</div>
+							<div class="form">
+								<div class="label">将来の野望：</div>
+								<div class="input" th:text="${employeeForm.ambition}"></div>
+							</div>
+						</div>
 		<div class="form">
 			<div class="label">権限：</div>
-			<div class="input" th:switch="${employee.authority}">
-				<span th:case="1">一般</span> <span th:case="2">管理者</span>
+			<div class="input" th:switch="${employeeForm.authority}">
+				<span th:case="1">一般</span>
+				<span th:case="2">管理者</span>
 			</div>
 		</div>
 		<div class="form">
 			<div class="label">部署名：</div>
-			<div class="input" th:switch="${employee.deptId}">
-				<span th:case="1">営業部</span> <span th:case="2">経理部</span> <span th:case="3">総務部</span>
+			<div class="input" th:switch="${employeeForm.deptId}">
+			<span th:case="0">マネージャー</span>	<span th:case="1">教育事業部</span> <span th:case="2">開発事業部</span> 
 			</div>
 		</div>
 		<form th:action="@{/delete/complete}" method="post" name="check">
