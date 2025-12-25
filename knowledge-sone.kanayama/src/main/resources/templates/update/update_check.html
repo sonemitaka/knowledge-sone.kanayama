@@ -142,41 +142,42 @@
 				<input type="hidden" th:field="*{sadWords}" />
 				<input type="hidden" th:field="*{sadReceive}" />
 				<input type="hidden" th:field="*{ambition}" />
-
 				<input type="submit" value="変更" />
 			</div>
 		</div>
 	</form>
-	<form th:action="@{/update/back}" method="post" th:object="${employeeForm}">
+	<form th:action="@{/update/complete}" method="post" th:object="${employeeForm}" name="check">
+
+		<input type="hidden" th:field="*{empId}" />
+		<input type="hidden" th:field="*{empPass}" />
+		<input type="hidden" th:field="*{empName}" />
+		<input type="hidden" th:field="*{gender}" />
+		<input type="hidden" th:field="*{birthday}" />
+		<input type="hidden" th:field="*{authority}" />
+		<input type="hidden" th:field="*{deptId}" />
+		<input type="hidden" th:field="*{furigana}" />
+		<input type="hidden" th:field="*{hometown}" />
+		<input type="hidden" th:field="*{joiningDay}" />
+		<input type="hidden" th:field="*{mailAddress}" />
+		<input type="hidden" th:field="*{nickName}" />
+		<input type="hidden" th:field="*{previousJob}" />
+		<input type="hidden" th:field="*{focusTime}" />
+		<input type="hidden" th:field="*{favoriteWords}" />
+		<input type="hidden" th:field="*{respect}" />
+		<input type="hidden" th:field="*{hobby}" />
+		<input type="hidden" th:field="*{speciality}" />
+		<input type="hidden" th:field="*{spendHolidays}" />
+		<input type="hidden" th:field="*{happyWords}" />
+		<input type="hidden" th:field="*{happyReceive}" />
+		<input type="hidden" th:field="*{sadWords}" />
+		<input type="hidden" th:field="*{sadReceive}" />
+		<input type="hidden" th:field="*{ambition}" />
 		<div class="form">
 			<div class="label"></div>
 			<div class="input">
-				<input type="hidden" th:field="*{empId}" />
-				<input type="hidden" th:field="*{empPass}" />
-				<input type="hidden" th:field="*{empName}" />
-				<input type="hidden" th:field="*{gender}" />
-				<input type="hidden" th:field="*{birthday}" />
-				<input type="hidden" th:field="*{authority}" />
-				<input type="hidden" th:field="*{deptId}" />
-				<input type="hidden" th:field="*{furigana}" />
-				<input type="hidden" th:field="*{hometown}" />
-				<input type="hidden" th:field="*{joiningDay}" />
-				<input type="hidden" th:field="*{mailAddress}" />
-				<input type="hidden" th:field="*{nickName}" />
-				<input type="hidden" th:field="*{previousJob}" />
-				<input type="hidden" th:field="*{focusTime}" />
-				<input type="hidden" th:field="*{favoriteWords}" />
-				<input type="hidden" th:field="*{respect}" />
-				<input type="hidden" th:field="*{hobby}" />
-				<input type="hidden" th:field="*{speciality}" />
-				<input type="hidden" th:field="*{spendHolidays}" />
-				<input type="hidden" th:field="*{happyWords}" />
-				<input type="hidden" th:field="*{happyReceive}" />
-				<input type="hidden" th:field="*{sadWords}" />
-				<input type="hidden" th:field="*{sadReceive}" />
-				<input type="hidden" th:field="*{ambition}" />
+				<input type="submit" value="変更" style="margin-right: 20px;" />
 
-				<input type="submit" value="戻る" />
+				<input type="button" value="戻る" onclick="history.back()" />
 			</div>
 		</div>
 	</form>

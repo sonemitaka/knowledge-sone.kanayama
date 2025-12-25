@@ -4,6 +4,7 @@
 <head>
 	<title>会員変更入力 | シェアードショップ</title>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="../../static/css/stylesheet.css">
 </head>
 
 <body th:object="${userForm}" class="admin user_update_input_admin">
@@ -11,14 +12,6 @@
 
 	<div class="update">
 		<form th:action="@{/update/check}" method="post" th:object="${employeeForm}">
-
-			<div class="form">
-				<div class="label">社員番号：</div>
-				<div class="input required">
-					<input type="text" th:field="*{empId}" />
-				</div>
-			</div>
-
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
@@ -170,7 +163,7 @@
 			<div class="form">
 				<div class="label">権限：</div>
 				<div class="input">
-					<input type="radio" th:field="*{authority}" value="1" />一般&nbsp;&nbsp;
+					<input type="radio" th:field="*{authority}" value="1" />一般
 					<input type="radio" th:field="*{authority}" value="2" />管理者
 				</div>
 			</div>
@@ -178,11 +171,9 @@
 			<div class="form">
 				<div class="label">部署名：</div>
 				<div class="input">
-					<select th:field="*{deptId}">
-						<option value="1">マネージャー</option>
-						<option value="2">教育事業部</option>
-						<option value="3">開発事業部</option>
-					</select>
+					<input type="radio" th:field="*{deptId}" value="1" />マネージャー&nbsp;&nbsp;
+					<input type="radio" th:field="*{deptId}" value="2" />教育事業部&nbsp;&nbsp;
+					<input type="radio" th:field="*{deptId}" value="3" />開発事業部
 				</div>
 			</div>
 

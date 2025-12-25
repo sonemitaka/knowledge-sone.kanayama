@@ -4,6 +4,7 @@
 <head>
 	<title>会員登録入力 | シェアードショップ</title>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="../../static/css/stylesheet.css">
 </head>
 
 <body class="admin user_regist_input_admin">
@@ -12,14 +13,6 @@
 	<div class="update">
 		<form th:action="@{/regist/check}" method="post" th:object="${employeeForm}">
 			<div class="form">
-
-				<div class="form">
-					<div class="label">社員番号：</div>
-					<div class="input required">
-						<input type="text" th:field="*{empId}" />
-					</div>
-				</div>
-
 				<div class="label">パスワード：</div>
 				<div class="input required">
 					<input type="password" th:field="*{empPass}" />
@@ -51,7 +44,7 @@
 			<div class="form">
 				<div class="label">出身地：</div>
 				<div class="input required">
-					<input type="text" th:field="*{homeTown}" />
+					<input type="text" th:field="*{hometown}" />
 				</div>
 			</div>
 
@@ -170,7 +163,7 @@
 			<div class="form">
 				<div class="label">権限：</div>
 				<div class="input">
-					<input type="radio" th:field="*{authority}" value="1" />一般;
+					<input type="radio" th:field="*{authority}" value="1" />一般
 					<input type="radio" th:field="*{authority}" value="2" />管理者
 				</div>
 			</div>
@@ -178,11 +171,9 @@
 			<div class="form">
 				<div class="label">部署名：</div>
 				<div class="input">
-					<select th:field="*{deptId}">
-						<option value="1">マネージャー</option>
-						<option value="2">教育事業部</option>
-						<option value="3">開発事業部</option>
-					</select>
+					<input type="radio" th:field="*{deptId}" value="1" />マネージャー
+					<input type="radio" th:field="*{deptId}" value="2" />教育事業部
+					<input type="radio" th:field="*{deptId}" value="3" />開発事業部
 				</div>
 			</div>
 

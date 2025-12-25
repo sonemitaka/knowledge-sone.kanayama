@@ -29,7 +29,8 @@ table {
 	margin: 0px auto 20px;
 }
 
-table td, table th {
+table td,
+table th {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #87CEEB;
@@ -103,7 +104,7 @@ div.input {
 	width: 470px;
 	height: 35px;
 	text-align: left;
-	
+
 }
 
 select {
@@ -113,9 +114,10 @@ select {
 
 /* ---- 入力フォーム(ログイン) ---- */
 
-.login_form{
+.login_form {
 	display: flex;
 }
+
 div.login_label {
 
 	width: 305px;
@@ -125,12 +127,12 @@ div.login_label {
 }
 
 div.login_input {
-	
+
 	width: 410px;
 	height: 35px;
 	text-align: left;
 }
- 
+
 
 /* ---- 処理完了メッセージの出力箇所 ---- */
 div.message {
@@ -158,3 +160,125 @@ input[type=submit] {
 	color: #FF0000;
 }
 
+/* 1. 親要素(article)の700px制限を解除して横スクロールを許可する */
+article {
+	width: auto !important;
+	/* 固定幅を解除 */
+	max-width: 920px;
+	/* レイアウトが壊れないよう最大幅を指定 */
+}
+
+/* 2. スクロールエリアの設定 */
+.scrol {
+	overflow-x: auto;
+	/* 横スクロールを有効にする */
+	width: 920px;
+	/* ★ヘッダーの .content と同じ幅に固定 */
+	margin: 0 auto 20px;
+	/* ★中央寄せ(auto)にする */
+	border: 1px solid #87CEEB;
+	background-color: #fff;
+}
+
+/* ついでに、メインコンテンツ自体の幅も 920px に合わせます */
+article {
+	width: 920px !important;
+	/* layout.cssの700pxを上書き */
+	padding-left: 0;
+	/* 余白をリセットして中央に寄せやすくする */
+	margin: 0 auto;
+}
+
+/* 3. テーブルのスタイルをリセット＆再定義 */
+.list_table {
+	width: auto !important;
+	/* stylesheet.cssのwidth指定を上書き */
+	min-width: 100%;
+	border-collapse: separate;
+	/* 名前固定のために必要 */
+	border-spacing: 0;
+	white-space: nowrap;
+	/* ★文字の折り返しを禁止（これで横長になる） */
+}
+
+.list_table th,
+.list_table td {
+	border: 1px solid #87CEEB;
+	padding: 8px 12px;
+	text-align: center;
+	background-color: #fff;
+}
+
+/* 4. 名前の列（左から3番目）を固定する */
+/* 社員番号(1), 部署名(2), 名前(3) */
+.list_table th:nth-child(3),
+.list_table td:nth-child(3) {
+	position: sticky;
+	left: 0;
+	z-index: 10;
+	background-color: #E6F7FF !important;
+	/* 固定列を少し色付け */
+	border-right: 2px solid #87CEEB;
+}
+
+/* ヘッダーの色（名前固定用z-index含む） */
+.list_table thead th {
+	background-color: #ADD8E6;
+	/* 既存のデザインに合わせた水色 */
+	position: sticky;
+	top: 0;
+	z-index: 5;
+}
+
+.list_table thead th:nth-child(3) {
+	z-index: 15;
+	/* 名前のヘッダーを最前面に */
+}
+
+/* 5. 既存のstylesheet.cssの幅指定(th.empName等)を無効化する */
+.list_table th[class] {
+	width: auto !important;
+}
+
+/* ---- 社員登録・変更画面の入力フィールド調整 ---- */
+/* 1. フォーム全体の横幅制限を広げる（720pxだとテキストボックスがはみ出すため） */
+div.form {
+	width: 850px !important;
+	margin: 10px auto;
+}
+
+/* 2. 入力エリアの横幅を中身（テキストボックス）に合わせて自動調整にする */
+div.input {
+	width: auto !important;
+	height: auto !important;
+	/* 固定高さを解除してパディングを反映 */
+	min-height: 35px;
+}
+
+/* 3. テキストボックス、パスワード、セレクトボックスの長さを一括設定 */
+div.input input[type="text"],
+div.input input[type="password"],
+div.input select {
+	width: 500px;
+	/* ★ここを好きな長さに調整してください */
+	padding: 6px 10px;
+	/* 入力しやすくするために内側に余白を追加 */
+	border: 1px solid #87CEEB;
+	border-radius: 4px;
+	box-sizing: border-box;
+	/* paddingを含めた幅計算にする */
+	color: #12526D;
+}
+
+/* 4. ラジオボタンは広げない（そのままにする） */
+div.input input[type="radio"] {
+	width: auto !important;
+}
+
+/* 5. 入力中に色を変えて、どこを入力しているか分かりやすくする */
+div.input input:focus,
+div.input select:focus {
+	outline: none;
+	border-color: #12526D;
+	background-color: #F0FAFF;
+}

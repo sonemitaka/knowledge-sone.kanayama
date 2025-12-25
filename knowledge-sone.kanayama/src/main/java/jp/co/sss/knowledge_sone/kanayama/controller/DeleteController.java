@@ -30,9 +30,7 @@ public class DeleteController {
 	 */
 	@RequestMapping(path = "/delete/check", method = RequestMethod.GET)
 	public String checkDelete(Integer empId, Model model) {
-
-		model.addAttribute("employee", searchForEmployeesByEmpIdService.execute(empId));
-
+		model.addAttribute("employeeForm", searchForEmployeesByEmpIdService.execute(empId));
 		return "delete/delete_check";
 	}
 
