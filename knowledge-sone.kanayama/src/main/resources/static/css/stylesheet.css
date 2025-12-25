@@ -1,10 +1,9 @@
 ﻿@charset "UTF-8";
 
 /* ---- その他のスタイル調整用CSS ---- */
-
 /* ---- 文字の色 ---- */
 body {
-	color: #12526d;
+	color: #12526D;
 }
 
 /* ---- ページタイトル ---- */
@@ -104,22 +103,19 @@ div.input {
 	width: 470px;
 	height: 35px;
 	text-align: left;
-
 }
 
 select {
 	font-size: 10pt;
-	color: #12526d;
+	color: #12526D;
 }
 
 /* ---- 入力フォーム(ログイン) ---- */
-
 .login_form {
 	display: flex;
 }
 
 div.login_label {
-
 	width: 305px;
 	height: 35px;
 	padding-right: 5px;
@@ -127,12 +123,10 @@ div.login_label {
 }
 
 div.login_input {
-
 	width: 410px;
 	height: 35px;
 	text-align: left;
 }
-
 
 /* ---- 処理完了メッセージの出力箇所 ---- */
 div.message {
@@ -142,13 +136,25 @@ div.message {
 }
 
 /* ---- ボタン全般 ---- */
-input[type=submit] {
+/* ---- ボタン全般 ---- */
+input[type="submit"],
+input[type="button"] {
+	/* ←ここを追加しました */
 	border-width: 1px;
 	border-style: solid;
 	border-color: #808080;
 	padding: 0px 10px;
 	border-radius: 6px;
-	color: #12526d;
+	color: #12526D;
+	cursor: pointer;
+	/* マウスを乗せた時に指マークにする */
+}
+
+/* ボタンにマウスを乗せた時の色変化（お好みで追加してください） */
+input[type="submit"]:hover,
+input[type="button"]:hover {
+	background-color: #F0FAFF;
+	border-color: #12526D;
 }
 
 /* ---- エラーメッセージ ---- */
@@ -171,22 +177,12 @@ article {
 /* 2. スクロールエリアの設定 */
 .scrol {
 	overflow-x: auto;
-	/* 横スクロールを有効にする */
-	width: 920px;
-	/* ★ヘッダーの .content と同じ幅に固定 */
-	margin: 0 auto 20px;
-	/* ★中央寄せ(auto)にする */
+	/* 横スクロールを強制有効 */
+	width: 100%;
+	/* 700pxの範囲内でスクロールさせる */
 	border: 1px solid #87CEEB;
+	margin-bottom: 20px;
 	background-color: #fff;
-}
-
-/* ついでに、メインコンテンツ自体の幅も 920px に合わせます */
-article {
-	width: 920px !important;
-	/* layout.cssの700pxを上書き */
-	padding-left: 0;
-	/* 余白をリセットして中央に寄せやすくする */
-	margin: 0 auto;
 }
 
 /* 3. テーブルのスタイルをリセット＆再定義 */

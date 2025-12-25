@@ -176,21 +176,11 @@
 					<input type="radio" th:field="*{deptId}" value="3" />開発事業部
 				</div>
 			</div>
-
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
-					<input type="hidden" th:field="*{empId}" />
-					<input type="submit" value="変更" />
-				</div>
-			</div>
-		</form>
-
-		<form th:action="@{/list}" name="back">
-			<div class="form">
-				<div class="label"></div>
-				<div class="input">
-					<input type="submit" value="戻る" />
+					<input type="submit" value="変更" style="margin-right: 20px;" />
+					<input type="button" value="戻る" th:onclick="|location.href='@{/list}'|" />
 				</div>
 			</div>
 		</form>

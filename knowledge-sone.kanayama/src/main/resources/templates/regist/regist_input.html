@@ -180,16 +180,8 @@
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
-					<input type="submit" value="登録" />
-				</div>
-			</div>
-		</form>
-
-		<form th:action="@{/list}" name="back">
-			<div class="form">
-				<div class="label"></div>
-				<div class="input">
-					<input type="submit" value="戻る" />
+					<input type="submit" value="登録" style="margin-right: 20px;" />
+					<input type="button" value="戻る" th:onclick="|location.href='@{/list}'|" />
 				</div>
 			</div>
 		</form>

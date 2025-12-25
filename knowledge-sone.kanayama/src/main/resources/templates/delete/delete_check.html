@@ -117,15 +117,20 @@
 				<div class="label"></div>
 				<div class="input">
 					<input type="hidden" name="empId" th:value="${employeeForm.empId}" />
-
-					<input type="submit" value="削除" class="delete"
-						style="margin-right: 20px; background-color: #FFCCCC;" />
-
-					<input type="button" value="戻る" onclick="history.back()" />
-				</div>
-			</div>
+					<div class="form">
+						<div class="label"></div>
+						<div class="input">
+							<input type="submit" value="削除" style="margin-right: 20px;" />
+							<input type="button" value="戻る" th:onclick="|location.href='@{/list}'|" />
+						</div>
+					</div>
 		</form>
 	</div>
+</body>
+</div>
+</div>
+</form>
+</div>
 </body>
 
 </html>
