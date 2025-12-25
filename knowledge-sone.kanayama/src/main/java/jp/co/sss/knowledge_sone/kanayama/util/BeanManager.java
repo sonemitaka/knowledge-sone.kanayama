@@ -1,9 +1,6 @@
 package jp.co.sss.knowledge_sone.kanayama.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import jp.co.sss.knowledge_sone.kanayama.been.EmployeeBean;
@@ -35,7 +32,7 @@ public class BeanManager {
 		form.setMailAddress(bean.getMailAddress());
 		form.setNickName(bean.getNickName());
 		form.setPreviousJob(bean.getPreviousJob());
-		form.setFoucsTime(bean.getFoucsTime());
+		form.setFocusTime(bean.getFocusTime());
 		form.setFavoriteWords(bean.getFavoriteWords());
 		form.setRespect(bean.getRespect());
 		form.setHobby(bean.getHobby());
@@ -67,21 +64,25 @@ public class BeanManager {
 		employeeBean.setFurigana(form.getFurigana());
 		employeeBean.setGender(form.getGender());
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		Date formatDate = null;
-		Date formatDate2 = null;
-		try {
-			formatDate = sdf.parse(sdf.format(form.getBirthday()));
-			formatDate2 = sdf.parse(sdf.format(form.getJoiningDay()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		employeeBean.setBirthday(formatDate);
+		//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		//		Date formatDate = null;
+		//		Date formatDate2 = null;
+		//		try {
+		//			formatDate = sdf.parse(sdf.format(form.getBirthday()));
+		//			formatDate2 = sdf.parse(sdf.format(form.getJoiningDay()));
+		//		} catch (ParseException e) {
+		//			e.printStackTrace();
+		//		}
+		//		employeeBean.setBirthday(formatDate);
+		employeeBean.setBirthday(form.getBirthday());
+		employeeBean.setJoiningDay(form.getJoiningDay());
 		employeeBean.setAuthority(form.getAuthority());
 		employeeBean.setHometown(form.getHometown());
-		employeeBean.setJoiningDay(formatDate2);
+		//		employeeBean.setJoiningDay(formatDate2);
 		employeeBean.setMailAddress(form.getMailAddress());
 		employeeBean.setNickName(form.getNickName());
+		employeeBean.setPreviousJob(form.getPreviousJob());
+		employeeBean.setFocusTime(form.getFocusTime());
 		employeeBean.setFavoriteWords(form.getFavoriteWords());
 		employeeBean.setRespect(form.getRespect());
 		employeeBean.setHobby(form.getHobby());
@@ -118,21 +119,25 @@ public class BeanManager {
 		employee.setFurigana(form.getFurigana());
 		employee.setGender(form.getGender());
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		Date formatDate = null;
-		Date formatDate2 = null;
-		try {
-			formatDate = sdf.parse(sdf.format(form.getBirthday()));
-			formatDate2 = sdf.parse(sdf.format(form.getJoiningDay()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		employee.setBirthday(formatDate);
+		//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		//		Date formatDate = null;
+		//		Date formatDate2 = null;
+		//		try {
+		//			formatDate = sdf.parse(sdf.format(form.getBirthday()));
+		//			formatDate2 = sdf.parse(sdf.format(form.getJoiningDay()));
+		//		} catch (ParseException e) {
+		//			e.printStackTrace();
+		//		}
+		//		employee.setBirthday(formatDate);
+		employee.setBirthday(form.getBirthday());
+		employee.setJoiningDay(form.getJoiningDay());
 		employee.setAuthority(form.getAuthority());
 		employee.setHometown(form.getHometown());
-		employee.setJoiningDay(formatDate2);
+		//		employee.setJoiningDay(formatDate2);
 		employee.setMailAddress(form.getMailAddress());
 		employee.setNickName(form.getNickName());
+		employee.setPreviousJob(form.getPreviousJob());
+		employee.setFocusTime(form.getFocusTime());
 		employee.setFavoriteWords(form.getFavoriteWords());
 		employee.setRespect(form.getRespect());
 		employee.setHobby(form.getHobby());
@@ -206,7 +211,7 @@ public class BeanManager {
 			employeeBean.setMailAddress(employee.getMailAddress());
 			employeeBean.setNickName(employee.getNickName());
 			employeeBean.setPreviousJob(employee.getPreviousJob());
-			employeeBean.setFoucsTime(employee.getFoucsTime());
+			employeeBean.setFocusTime(employee.getFocusTime());
 			employeeBean.setFavoriteWords(employee.getFavoriteWords());
 			employeeBean.setRespect(employee.getRespect());
 			employeeBean.setHobby(employee.getHobby());
@@ -248,7 +253,7 @@ public class BeanManager {
 		employeeBean.setMailAddress(employee.getMailAddress());
 		employeeBean.setNickName(employee.getNickName());
 		employeeBean.setPreviousJob(employee.getPreviousJob());
-		employeeBean.setFoucsTime(employee.getFoucsTime());
+		employeeBean.setFocusTime(employee.getFocusTime());
 		employeeBean.setFavoriteWords(employee.getFavoriteWords());
 		employeeBean.setRespect(employee.getRespect());
 		employeeBean.setHobby(employee.getHobby());

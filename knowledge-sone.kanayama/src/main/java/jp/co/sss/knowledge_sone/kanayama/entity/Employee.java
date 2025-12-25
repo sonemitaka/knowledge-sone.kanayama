@@ -55,7 +55,7 @@ public class Employee {
 	private String previousJob;
 
 	@Column
-	private String foucsTime;
+	private String focusTime;
 
 	@Column
 	private String favoriteWords;
@@ -174,15 +174,15 @@ public class Employee {
 	/**
 	 * @return foucsTime
 	 */
-	public String getFoucsTime() {
-		return foucsTime;
+	public String getFocusTime() {
+		return focusTime;
 	}
 
 	/**
 	 * @param foucsTime セットする foucsTime
 	 */
-	public void setFoucsTime(String foucsTime) {
-		this.foucsTime = foucsTime;
+	public void setFocusTime(String focusTime) {
+		this.focusTime = focusTime;
 	}
 
 	/**

@@ -44,7 +44,7 @@ public class EmployeeForm {
 	private String previousJob;
 
 	/**仕事のはかどる時間*/
-	private String foucsTime;
+	private String focusTime;
 
 	/**好きな言葉*/
 	private String favoriteWords;
@@ -167,24 +167,24 @@ public class EmployeeForm {
 	}
 
 	/**
-	 * @return foucsTime
-	 */
-	public String getFoucsTime() {
-		return foucsTime;
-	}
-
-	/**
-	 * @param foucsTime セットする foucsTime
-	 */
-	public void setFoucsTime(String foucsTime) {
-		this.foucsTime = foucsTime;
-	}
-
-	/**
 	 * @return favoriteWords
 	 */
 	public String getFavoriteWords() {
 		return favoriteWords;
+	}
+
+	/**
+	 * @return focusTime
+	 */
+	public String getFocusTime() {
+		return focusTime;
+	}
+
+	/**
+	 * @param focusTime セットする focusTime
+	 */
+	public void setFocusTime(String focusTime) {
+		this.focusTime = focusTime;
 	}
 
 	/**

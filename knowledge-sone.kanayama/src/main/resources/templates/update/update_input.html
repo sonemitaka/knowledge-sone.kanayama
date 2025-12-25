@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
+
 <head>
-<title>会員変更入力 | シェアードショップ</title>
-<meta charset="UTF-8" />
+	<title>会員変更入力 | シェアードショップ</title>
+	<meta charset="UTF-8" />
 </head>
+
 <body th:object="${userForm}" class="admin user_update_input_admin">
 	<h3>社員変更入力画面</h3>
-	
+
 	<div class="update">
 		<form th:action="@{/update/check}" method="post" th:object="${employeeForm}">
-			
+
 			<div class="form">
 				<div class="label">社員番号：</div>
 				<div class="input required">
 					<input type="text" th:field="*{empId}" />
 				</div>
 			</div>
-	
+
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
 					<input type="password" th:field="*{empPass}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">名前：</div>
 				<div class="input required">
 					<input type="text" th:field="*{empName}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">フリガナ：</div>
 				<div class="input required">
 					<input type="text" th:field="*{furigana}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">性別：</div>
 				<div class="input">
@@ -46,14 +47,14 @@
 					<input type="radio" th:field="*{gender}" value="2" />女性
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">出身地：</div>
 				<div class="input required">
 					<input type="text" th:field="*{hometown}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">入社日：(YYYY/MM/DD)</div>
 				<div class="input required">
@@ -67,7 +68,7 @@
 					<input type="text" th:field="*{mailAddress}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">誕生日：(YYYY/MM/DD)</div>
 				<div class="input required">
@@ -88,84 +89,84 @@
 					<input type="text" th:field="*{previousJob}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">仕事のはかどる時間：</div>
 				<div class="input required">
-					<input type="text" th:field="*{foucsTime}" />
+					<input type="text" th:field="*{focusTime}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">好きな言葉：</div>
 				<div class="input required">
 					<input type="text" th:field="*{favoriteWords}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">尊敬する人：</div>
 				<div class="input required">
 					<input type="text" th:field="*{respect}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">趣味：</div>
 				<div class="input required">
 					<input type="text" th:field="*{hobby}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">特技：</div>
 				<div class="input required">
 					<input type="text" th:field="*{speciality}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">休日の過ごし方：</div>
 				<div class="input required">
 					<input type="text" th:field="*{spendHolidays}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">言われたらうれしい言葉：</div>
 				<div class="input required">
 					<input type="text" th:field="*{happyWords}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">やられたらウレシイこと：</div>
 				<div class="input required">
 					<input type="text" th:field="*{happyReceive}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">言われたら悲しい言葉：</div>
 				<div class="input required">
 					<input type="text" th:field="*{sadWords}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">やられるとカナシイこと：</div>
 				<div class="input required">
 					<input type="text" th:field="*{sadReceive}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">将来の野望：</div>
 				<div class="input required">
 					<input type="text" th:field="*{ambition}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">権限：</div>
 				<div class="input">
@@ -173,7 +174,7 @@
 					<input type="radio" th:field="*{authority}" value="2" />管理者
 				</div>
 			</div>
-	
+
 			<div class="form">
 				<div class="label">部署名：</div>
 				<div class="input">
@@ -183,8 +184,8 @@
 						<option value="3">開発事業部</option>
 					</select>
 				</div>
-	        </div>
-	        
+			</div>
+
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
@@ -193,7 +194,7 @@
 				</div>
 			</div>
 		</form>
-	
+
 		<form th:action="@{/list}" name="back">
 			<div class="form">
 				<div class="label"></div>
@@ -204,4 +205,5 @@
 		</form>
 	</div>
 </body>
+
 </html>

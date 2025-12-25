@@ -4,16 +4,47 @@
 <head>
 	<title>社員一覧 | 社員管理システム</title>
 	<meta charset="UTF-8" />
+	<style>
+		/* 横スクロールとレイアウト崩れ防止のCSS */
+		.scrol {
+			overflow-x: auto;
+			width: 100%;
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+		}
+
+		.list_table {
+			width: auto;
+			min-width: 100%;
+			border-collapse: collapse;
+			white-space: nowrap;
+			/* 文字を改行させず横に伸ばす */
+		}
+
+		.list_table th,
+		.list_table td {
+			border: 1px solid #ddd;
+			padding: 10px 15px;
+			text-align: center;
+		}
+
+		.list_table th {
+			background-color: #F4F4F4;
+		}
+
+		/* ボタンが小さくなりすぎないように調整 */
+		.list_table input[type="submit"] {
+			padding: 5px 10px;
+			cursor: pointer;
+		}
+	</style>
 </head>
 
 <body class="admin user_list">
 	<h3>社員一覧画面</h3>
-
 	<div class="regist_link">
 		<a th:href="@{/regist/input}" th:hidden="${session.loginUser.authority == 1}">新規社員登録</a>
 	</div>
-
-	<!--	該当社員が0名の場合-->
 	<th:block th:if="${#lists.isEmpty(employees)}">
 		<div class="message">
 			<p class="back_to_top_message">該当する社員は存在しません。</p>
@@ -22,83 +53,84 @@
 			</p>
 		</div>
 	</th:block>
-	<!--	該当社員がいる場合-->
 	<div class="scrol">
 		<table class="list_table" id="emp_table" th:if="!${#lists.isEmpty(employees)}">
-			<tr>
-							<th>社員番号</th>
-				            <th>名前</th>
-				            <th>入社日</th>
-				            <th>勤続年数</th>
-				            <th>性別</th>
-				            <th>メール</th>
-				            <th>誕生日</th>
-				            <th>出身地</th>
-				            <th>ニックネーム</th>
-				            <th>仕事経験</th>
-				            <th>仕事のはかどる時間</th>
-				            <th>好きな言葉</th>
-				            <th>尊敬する人</th>
-				            <th>趣味</th>
-				            <th>特技</th>
-				            <th>休日の過ごし方</th>
-				            <th>言われたらうれしいこと</th>
-				            <th>やられたらウレシイこと</th>
-				            <th>いわれたら悲しい言葉</th>
-				            <th>やられると悲しいこと</th>
-				            <th>将来の野望</th>
-				            <th colspan="2">操作</th>
-			 </tr>
-			<tr th:each="employee: ${employees}">
-				<td th:text="${employee.empId}"></td>
-				<td th:text="${employee.empName}"></td>
-				<!--
-				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる
-				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される
-			-->
-			<td th:text="${employee.furigana}"></td>
-				<td th:switch="${employee.gender}">
-					<span th:case="1">男性</span> <span th:case="2">女性</span>
-				</td>
-				<td th:text="${employee.hometown}"></td>
-				<td th:text="${employee.joiningDay}"></td>
-				<td th:text="${employee.mailAddress}"></td>
-				<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
-				<td th:text="${employee.mailAddress}"></td>
-				<td th:switch="${employee.authority}">
-					<span th:case="1">一般</span> <span th:case="2">管理者</span>
-				</td>
-				<td th:text="${employee.nickName}"></td>
-				<td th:text="${employee.previousJob}"></td>
-				<td th:text="${employee.foucsTime}"></td>
-				<td th:text="${employee.favoriteWords}"></td>
-				<td th:text="${employee.respect}"></td>
-				<td th:text="${employee.hobby}"></td>
-				<td th:text="${employee.speciality}"></td>
-				<td th:text="${employee.spendHolidays}"></td>
-				<td th:text="${employee.happyWords}"></td>
-				<td th:text="${employee.happyReceive}"></td>
-				<td th:text="${employee.sadWords}"></td>
-				<td th:text="${employee.sadReceive}"></td>
-				<td th:text="${employee.ambition}"></td>
-				<td th:text="${employee.authority}"></td>
-				<td>
-					<form method="get" th:action="@{/update/input}">
-						<input type="hidden" name="empId" th:value="${employee.empId}" />
-						<input type="submit" value="変更" th:if="${session.loginUser.empId == employee.empId}" />
-						<input type="submit" value="変更" th:unless="${session.loginUser.empId == employee.empId}"
-							th:disabled="${session.loginUser.authority == 1}" />
-					</form>
-				</td>
-				<td>
-					<form method="get" th:action="@{/delete/check}">
-						<input type="hidden" name="empId" th:value="${employee.empId}" />
-						<input type="submit" value="削除" class="delete"
-							th:disabled="${session.loginUser.authority == 1}" />
-					</form>
-				</td>
-			</tr>
+			<thead>
+				<tr>
+					<th>社員番号</th>
+					<th>部署名</th>
+					<th>名前</th>
+					<th>フリガナ</th>
+					<th>性別</th>
+					<th>出身地</th>
+					<th>入社日</th>
+					<th>メール</th>
+					<th>誕生日</th>
+					<th>ニックネーム</th>
+					<th>仕事経験</th>
+					<th>仕事のはかどる時間</th>
+					<th>好きな言葉</th>
+					<th>尊敬する人</th>
+					<th>趣味</th>
+					<th>特技</th>
+					<th>休日の過ごし方</th>
+					<th>言われたらうれしいこと</th>
+					<th>やられたらウレシイこと</th>
+					<th>いわれたら悲しい言葉</th>
+					<th>やられると悲しいこと</th>
+					<th>将来の野望</th>
+					<th>権限</th>
+					<th colspan="2">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee: ${employees}">
+					<td th:text="${employee.empId}"></td>
+					<td th:text="${employee.deptName}"></td>
+					<td th:text="${employee.empName}"></td>
+					<td th:text="${employee.furigana}"></td>
+					<td th:switch="${employee.gender}">
+						<span th:case="1">男性</span> <span th:case="2">女性</span>
+					</td>
+					<td th:text="${employee.hometown}"></td>
+					<td th:text="${#dates.format(employee.joiningDay, 'yyyy/MM/dd')}"></td>
+					<td th:text="${employee.mailAddress}"></td>
+					<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
+					<td th:text="${employee.nickName}"></td>
+					<td th:text="${employee.previousJob}"></td>
+					<td th:text="${employee.focusTime}"></td>
+					<td th:text="${employee.favoriteWords}"></td>
+					<td th:text="${employee.respect}"></td>
+					<td th:text="${employee.hobby}"></td>
+					<td th:text="${employee.speciality}"></td>
+					<td th:text="${employee.spendHolidays}"></td>
+					<td th:text="${employee.happyWords}"></td>
+					<td th:text="${employee.happyReceive}"></td>
+					<td th:text="${employee.sadWords}"></td>
+					<td th:text="${employee.sadReceive}"></td>
+					<td th:text="${employee.ambition}"></td>
+					<td th:switch="${employee.authority}">
+						<span th:case="1">一般</span> <span th:case="2">管理者</span>
+					</td>
+					<td>
+						<form method="get" th:action="@{/update/input}">
+							<input type="hidden" name="empId" th:value="${employee.empId}" />
+							<input type="submit" value="変更" th:if="${session.loginUser.empId == employee.empId}" />
+							<input type="submit" value="変更" th:unless="${session.loginUser.empId == employee.empId}"
+								th:disabled="${session.loginUser.authority == 1}" />
+						</form>
+					</td>
+					<td>
+						<form method="get" th:action="@{/delete/check}">
+							<input type="hidden" name="empId" th:value="${employee.empId}" />
+							<input type="submit" value="削除" class="delete"
+								th:disabled="${session.loginUser.authority == 1}" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </body>
+
 </html>

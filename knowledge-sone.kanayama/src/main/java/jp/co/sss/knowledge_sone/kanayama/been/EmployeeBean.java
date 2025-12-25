@@ -49,7 +49,7 @@ public class EmployeeBean {
 	private String previousJob;
 
 	/**仕事のはかどる時間*/
-	private String foucsTime;
+	private String focusTime;
 
 	/**好きな言葉*/
 	private String favoriteWords;
@@ -110,7 +110,7 @@ public class EmployeeBean {
 	public EmployeeBean(Integer empId, String empPass, String empName, String furigana, Integer gender,
 			Date birthday,
 			Integer authority, String hometown, Date joiningDay, String mailAddress, String nickName,
-			String previousJob, String foucsTime,
+			String previousJob, String focusTime,
 			String favoriteWords, String respect, String hobby, String speciality, String spendHolidays,
 			String happyWords, String happyReceive,
 			String sadWords, String sadReceive, String ambition, Integer deptId) {
@@ -126,7 +126,7 @@ public class EmployeeBean {
 		this.mailAddress = mailAddress;
 		this.nickName = nickName;
 		this.previousJob = previousJob;
-		this.foucsTime = foucsTime;
+		this.focusTime = focusTime;
 		this.favoriteWords = favoriteWords;
 		this.respect = respect;
 		this.hobby = hobby;
@@ -388,17 +388,17 @@ public class EmployeeBean {
 	}
 
 	/**
-	 * @return foucsTime
+	 * @return focusTime
 	 */
-	public String getFoucsTime() {
-		return foucsTime;
+	public String getFocusTime() {
+		return focusTime;
 	}
 
 	/**
-	 * @param foucsTime セットする foucsTime
+	 * @param focusTime セットする focusTime
 	 */
-	public void setFoucsTime(String foucsTime) {
-		this.foucsTime = foucsTime;
+	public void setFocusTime(String focusTime) {
+		this.focusTime = focusTime;
 	}
 
 	/**
