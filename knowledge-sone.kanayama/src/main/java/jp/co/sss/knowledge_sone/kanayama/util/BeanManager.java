@@ -26,10 +26,26 @@ public class BeanManager {
 		form.setEmpId(bean.getEmpId());
 		form.setEmpPass(bean.getEmpPass());
 		form.setEmpName(bean.getEmpName());
+		form.setFurigana(bean.getFurigana());
 		form.setGender(bean.getGender());
-		form.setAddress(bean.getAddress());
 		form.setBirthday(bean.getBirthday());
 		form.setAuthority(bean.getAuthority());
+		form.setHometown(bean.getHometown());
+		form.setJoiningDay(bean.getJoiningDay());
+		form.setMailAddress(bean.getMailAddress());
+		form.setNickName(bean.getNickName());
+		form.setPreviousJob(bean.getPreviousJob());
+		form.setFoucsTime(bean.getFoucsTime());
+		form.setFavoriteWords(bean.getFavoriteWords());
+		form.setRespect(bean.getRespect());
+		form.setHobby(bean.getHobby());
+		form.setSpeciality(bean.getSpeciality());
+		form.setSpendHolidays(bean.getSpendHolidays());
+		form.setHappyReceive(bean.getHappyReceive());
+		form.setHappyWords(bean.getHappyWords());
+		form.setSadReceive(bean.getSadReceive());
+		form.setSadWords(bean.getSadWords());
+		form.setAmbition(bean.getAmbition());
 		form.setDeptId(bean.getDeptId());
 
 		return form;
@@ -48,18 +64,34 @@ public class BeanManager {
 		employeeBean.setEmpId(form.getEmpId());
 		employeeBean.setEmpPass(form.getEmpPass());
 		employeeBean.setEmpName(form.getEmpName());
+		employeeBean.setFurigana(form.getFurigana());
 		employeeBean.setGender(form.getGender());
-		employeeBean.setAddress(form.getAddress());
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date formatDate = null;
+		Date formatDate2 = null;
 		try {
 			formatDate = sdf.parse(sdf.format(form.getBirthday()));
+			formatDate2 = sdf.parse(sdf.format(form.getJoiningDay()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		employeeBean.setBirthday(formatDate);
 		employeeBean.setAuthority(form.getAuthority());
+		employeeBean.setHometown(form.getHometown());
+		employeeBean.setJoiningDay(formatDate2);
+		employeeBean.setMailAddress(form.getMailAddress());
+		employeeBean.setNickName(form.getNickName());
+		employeeBean.setFavoriteWords(form.getFavoriteWords());
+		employeeBean.setRespect(form.getRespect());
+		employeeBean.setHobby(form.getHobby());
+		employeeBean.setSpeciality(form.getSpeciality());
+		employeeBean.setSpendHolidays(form.getSpendHolidays());
+		employeeBean.setHappyWords(form.getHappyWords());
+		employeeBean.setHappyReceive(form.getHappyReceive());
+		employeeBean.setSadWords(form.getSadWords());
+		employeeBean.setSadReceive(form.getSadReceive());
+		employeeBean.setAmbition(form.getAmbition());
 		employeeBean.setDeptId(form.getDeptId());
 
 		String deptName = getDeptName(form.getDeptId());
@@ -83,18 +115,34 @@ public class BeanManager {
 		employee.setEmpId(form.getEmpId());
 		employee.setEmpPass(form.getEmpPass());
 		employee.setEmpName(form.getEmpName());
+		employee.setFurigana(form.getFurigana());
 		employee.setGender(form.getGender());
-		employee.setAddress(form.getAddress());
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date formatDate = null;
+		Date formatDate2 = null;
 		try {
 			formatDate = sdf.parse(sdf.format(form.getBirthday()));
+			formatDate2 = sdf.parse(sdf.format(form.getJoiningDay()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		employee.setBirthday(formatDate);
 		employee.setAuthority(form.getAuthority());
+		employee.setHometown(form.getHometown());
+		employee.setJoiningDay(formatDate2);
+		employee.setMailAddress(form.getMailAddress());
+		employee.setNickName(form.getNickName());
+		employee.setFavoriteWords(form.getFavoriteWords());
+		employee.setRespect(form.getRespect());
+		employee.setHobby(form.getHobby());
+		employee.setSpeciality(form.getSpeciality());
+		employee.setSpendHolidays(form.getSpendHolidays());
+		employee.setHappyWords(form.getHappyWords());
+		employee.setHappyReceive(form.getHappyReceive());
+		employee.setSadWords(form.getSadWords());
+		employee.setSadReceive(form.getSadReceive());
+		employee.setAmbition(form.getAmbition());
 
 		Department department = new Department();
 		department.setDeptId(form.getDeptId());
@@ -114,14 +162,14 @@ public class BeanManager {
 
 		switch (deptId) {
 		case 1:
-			deptName = "営業部";
+			deptName = "マネージャー";
 			break;
 		case 2:
-			deptName = "経理部";
+			deptName = "教育事業部";
 
 			break;
 		case 3:
-			deptName = "総務部";
+			deptName = "開発事業部";
 
 			break;
 
@@ -149,10 +197,26 @@ public class BeanManager {
 			employeeBean.setEmpId(employee.getEmpId());
 			employeeBean.setEmpPass(employee.getEmpPass());
 			employeeBean.setEmpName(employee.getEmpName());
+			employeeBean.setFurigana(employee.getFurigana());
 			employeeBean.setGender(employee.getGender());
-			employeeBean.setAddress(employee.getAddress());
 			employeeBean.setBirthday(employee.getBirthday());
 			employeeBean.setAuthority(employee.getAuthority());
+			employeeBean.setHometown(employee.getHometown());
+			employeeBean.setJoiningDay(employee.getJoiningDay());
+			employeeBean.setMailAddress(employee.getMailAddress());
+			employeeBean.setNickName(employee.getNickName());
+			employeeBean.setPreviousJob(employee.getPreviousJob());
+			employeeBean.setFoucsTime(employee.getFoucsTime());
+			employeeBean.setFavoriteWords(employee.getFavoriteWords());
+			employeeBean.setRespect(employee.getRespect());
+			employeeBean.setHobby(employee.getHobby());
+			employeeBean.setSpeciality(employee.getSpeciality());
+			employeeBean.setSpendHolidays(employee.getSpendHolidays());
+			employeeBean.setHappyWords(employee.getHappyWords());
+			employeeBean.setHappyReceive(employee.getHappyReceive());
+			employeeBean.setSadReceive(employee.getSadReceive());
+			employeeBean.setSadWords(employee.getSadWords());
+			employeeBean.setAmbition(employee.getAmbition());
 			employeeBean.setDeptId(employee.getDepartment().getDeptId());
 
 			tempEmployeeBeans.add(employeeBean);
@@ -175,10 +239,26 @@ public class BeanManager {
 		employeeBean.setEmpId(employee.getEmpId());
 		employeeBean.setEmpPass(employee.getEmpPass());
 		employeeBean.setEmpName(employee.getEmpName());
+		employeeBean.setFurigana(employee.getFurigana());
 		employeeBean.setGender(employee.getGender());
-		employeeBean.setAddress(employee.getAddress());
 		employeeBean.setBirthday(employee.getBirthday());
 		employeeBean.setAuthority(employee.getAuthority());
+		employeeBean.setHometown(employee.getHometown());
+		employeeBean.setJoiningDay(employee.getJoiningDay());
+		employeeBean.setMailAddress(employee.getMailAddress());
+		employeeBean.setNickName(employee.getNickName());
+		employeeBean.setPreviousJob(employee.getPreviousJob());
+		employeeBean.setFoucsTime(employee.getFoucsTime());
+		employeeBean.setFavoriteWords(employee.getFavoriteWords());
+		employeeBean.setRespect(employee.getRespect());
+		employeeBean.setHobby(employee.getHobby());
+		employeeBean.setSpeciality(employee.getSpeciality());
+		employeeBean.setSpendHolidays(employee.getSpendHolidays());
+		employeeBean.setHappyWords(employee.getHappyWords());
+		employeeBean.setHappyReceive(employee.getHappyReceive());
+		employeeBean.setSadReceive(employee.getSadReceive());
+		employeeBean.setSadWords(employee.getSadWords());
+		employeeBean.setAmbition(employee.getAmbition());
 		employeeBean.setDeptId(employee.getDepartment().getDeptId());
 
 		return employeeBean;
